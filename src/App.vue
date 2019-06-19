@@ -35,12 +35,13 @@
       <router-view />
     </section>
     <section class="footer">
-      Footer
+      <Comentarios></Comentarios>
     </section>
   </div>
 </template>
 
 <script>
+  import Comentarios from './components/Comentarios.vue'
   export default {
     data() {
       return {
@@ -50,7 +51,13 @@
     methods: {
       toggle() {
         this.active = !this.active
-      } 
+      } ,
+      scrollNavbar() {
+        var prevScrollpos = window.pageYOffset
+      }
+    },
+    components: {
+      Comentarios
     }
   }
 </script>
@@ -64,8 +71,13 @@
     font-family: sans-serif;
   }
   .navbar {
+    position: fixed;
+    z-index: 9999;
+    height: 50px;
+    width: 100%;
     background: #33333320;
     box-shadow: 0 2px 5px #33333380;
+    transition: top .2s;
   }
   .nav-title {
     display: none;
@@ -77,7 +89,6 @@
     margin: 0 auto;
   }
   .nav-item {
-    height: 50px;
   }
   .nav-link {
     text-decoration: none;
@@ -147,6 +158,26 @@
     width: 35px;
     height: 25px;
     cursor: pointer;
+  }
+  .page {
+  }
+  .article-title {
+    margin-bottom: 20px;
+  }
+  .hr-title {
+    margin-bottom: 10px;
+    color: #000;
+    margin: 10px 0 20px;
+    border: 1px solid #88888880;
+  }
+  .article-img {
+    float: left;
+    margin: 5px 25px 20px 0;
+  }
+  .article-text {
+    text-align: justify;
+    line-height: 160%;
+    margin-bottom: 15px;
   }
   @media (max-width: 991.98px) {
     .menu-toggle {
