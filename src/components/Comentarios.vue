@@ -18,13 +18,13 @@
       </div>
     </div>
     <hr>
-    <div class="comentario-container">
+    <div class="comentario-container" v-for="(comentario, index) of comentarios" :key="index">
       <img class="user-img2" src="https://placekitten.com/50/50" width="50">
       <div class="comentario-group">
-        <span class="comentario-nome">Leonardo Lima</span>
-        <small>18/06/2019</small>
+        <span class="comentario-nome">{{ comentario.user_name }}</span> | 
+        <small>{{ new Date(comentario.date).toLocaleString() }}</small>
         <p class="comentario-texto">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+          {{ comentario.texto }}
         </p>
         <div class="comentario-acao">
           <button>Curtir</button>
@@ -42,12 +42,31 @@
     name: 'Comentarios',
     data() {
       return {
-        visible: false
+        visible: false,
+        comentarios: [],
+        comentario: {
+          user_name: '',
+          date: '',
+          texto: ''
+        }
       }
     },
     methods: {
       postar() {
-        window.console.log(document.querySelector('div.comentario-texto').innerText)
+        this.comentario = {
+          user_name: 'Leonardo Lima',
+          date: new Date(),
+          texto: document.querySelector('div.comentario-texto').innerText
+        }
+        this.comentarios.push(this.comentario)
+        localStorage.setItem('comentarios', JSON.stringify(this.comentarios))
+        this.listar()
+      },
+      listar() {
+        var comentariosStorage = JSON.parse(localStorage.getItem('comentarios'))
+        if (comentariosStorage) {
+          this.comentarios = comentariosStorage
+        }
       },
       placeholderBlur() {
         var comentario = document.querySelector('div.comentario-texto').innerText
@@ -62,6 +81,9 @@
         this.visible = false
         comentario.focus
       }
+    },
+    mounted() {
+      this.listar()
     }
   }
 </script>
