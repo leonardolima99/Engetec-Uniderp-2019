@@ -17,8 +17,8 @@
         </div>
       </div>
     </div>
-    <hr>
     <div class="comentario-container" v-for="(comentario, index) of comentarios" :key="index">
+      <hr class="divisor">
       <img class="user-img2" src="https://placekitten.com/50/50" width="50">
       <div class="comentario-group">
         <span class="comentario-nome">{{ comentario.user_name }}</span> | 
@@ -33,6 +33,7 @@
         
       </div>
     </div>
+    <hr class="divisor">
   </div>
 </template>
 
@@ -139,6 +140,13 @@
     overflow: auto;
     z-index: 2;
   }
+  .comentario-nome {
+    font-weight: bold;
+  }
+  p.comentario-texto {
+    line-height: 140%;
+    margin: 5px 0 10px 0;
+  }
   .actions {
     position: relative;
     width: 100%;
@@ -157,7 +165,7 @@
     background-color: #fc9a22;
     padding: 0 16px;
     height: 40px;
-    font-size: 15px;
+    font-size: 16px;
     color: #f9f9f9;
     cursor: pointer;
     line-height: 36px;
@@ -165,5 +173,26 @@
   .btn:active {
     border: 2px solid #e3891c;
     background-color: #e3891c;
+  }
+  .comentario-acao button {
+    font-size: 14px;
+    background-color: white;
+    border: 1px solid #888;
+    border-radius: 7px;
+    padding: 5px 10px;
+    margin-right: 5px; 
+    cursor: pointer;
+  }
+
+  .comentario-acao button:hover {
+    box-shadow: inset 0 0 5px #55555550;
+  }
+  .comentario-acao button:active {
+    box-shadow: inset 0 0 5px #55555580;
+  }
+  hr.divisor {
+    border: 0;
+    border-bottom: 1px dashed #e3891c;
+    margin-bottom: 10px;
   }
 </style>

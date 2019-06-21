@@ -63,12 +63,12 @@
 </script>
 
 <style>
-
+  @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,700&display=swap');
   * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Quicksand', sans-serif;
   }
   .navbar {
     position: fixed;
