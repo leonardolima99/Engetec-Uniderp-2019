@@ -1,6 +1,44 @@
 <template>
   <div class="galeria">
-    <h1>This is an galeria page</h1>
+    <h2>Galeria</h2>
+    <div class="imagens">
+      <div class="img-galeria">
+        <img src="http://lorempixel.com/300/200/abstract/">
+      </div>
+      <div class="img-galeria">
+        <img src="http://lorempixel.com/300/200/city/">
+      </div>
+      <div class="img-galeria">
+        <img src="http://lorempixel.com/300/200/people/">
+      </div>
+      <div class="img-galeria">
+        <img src="http://lorempixel.com/300/200/transport/">
+      </div>
+      <div class="img-galeria">
+        <img src="http://lorempixel.com/300/200/animals/">
+      </div>
+      <div class="img-galeria">
+        <img src="http://lorempixel.com/300/200/food/">
+      </div>
+      <div class="img-galeria">
+        <img src="http://lorempixel.com/300/200/nature/">
+      </div>
+      <div class="img-galeria">
+        <img src="http://lorempixel.com/300/200/business/">
+      </div>
+      <div class="img-galeria">
+        <img src="http://lorempixel.com/300/200/nightlife/">
+      </div>
+      <div class="img-galeria">
+        <img src="http://lorempixel.com/300/200/sports/">
+      </div>
+      <div class="img-galeria">
+        <img src="http://lorempixel.com/300/200/cats/">
+      </div>
+      <div class="img-galeria">
+        <img src="http://lorempixel.com/300/200/technics/">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,3 +47,84 @@ export default {
   name: 'galeria'
 }
 </script>
+
+<style>
+  .img-galeria img {
+    cursor: pointer;
+    transition: .4s;
+  }
+  .img-galeria img:hover {
+  }
+  @media (max-width: 369.98px) {
+    .imagens {
+      margin: 10px 0;
+      display: grid;
+      grid-template-columns: 100%;
+      grid-gap: 1px 5px;
+    }
+    .img-galeria {
+      margin: 0 auto;
+    }
+    .img-galeria img {
+      width: calc(100%);
+    }
+  }
+  @media (min-width: 370px) and (max-width: 575.98px) {
+    .imagens {
+      margin: 10px 0;
+      display: grid;
+      grid-template-columns: 100%;
+      grid-gap: 1px 5px;
+    }
+    .img-galeria {
+      margin: 0 auto;
+    }
+    .img-galeria img {
+      width: 280px;
+    }
+  }
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .imagens {
+      margin: 10px 0;
+      display: grid;
+      grid-template-columns: 33% 33% 33%;
+      grid-gap: 1px 5px;
+    }
+    .img-galeria img {
+      width: calc(100% - 3px);
+    }
+  }
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    .imagens {
+      margin: 10px 0;
+      display: grid;
+      grid-template-columns: 33% 33% 33%;
+      grid-gap: 1px 5px;
+    }
+    .img-galeria img {
+      width: calc(100% - 3px);
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    .imagens {
+      margin: 10px 0;
+      display: grid;
+      grid-template-columns: 25% 25% 25% 25%;
+      grid-gap: 7px 3px;
+    }
+    .img-galeria img {
+      width: calc(100% - 9px);
+    }
+  }
+  @media (min-width: 1200px) {
+    .imagens {
+      margin: 10px 0;
+      display: grid;
+      grid-template-columns: 25% 25% 25% 25%;
+      grid-gap: 7px 3px;
+    }
+    .img-galeria img {
+      width: calc(100% - 9px);
+    }
+  }
+</style>

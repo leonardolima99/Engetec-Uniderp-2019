@@ -3,7 +3,7 @@
     <h2 class="article-title">
       Semana da Engenharia e Tecnologia - Uniderp
     </h2>
-		<img class="article-img" src="../assets/400.jpeg" width="400">
+		<img class="article-img" src="http://lorempixel.com/400/400/nightlife/">
 		<p class="article-text">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 		</p>
@@ -28,3 +28,11 @@
     }
 }
 </script>
+
+<style>
+  @media (max-width: 490px) {
+    .article-img {
+      width: 100%;
+    }
+  }
+</style>

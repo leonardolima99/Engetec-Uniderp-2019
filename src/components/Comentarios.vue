@@ -1,8 +1,9 @@
 <template>
   <div class="comentarios">
+    <hr class="divisor">
     <h2> Comentários </h2>
     <div class="user">
-      <img class="user-img1" src="https://placekitten.com/50/50" width="50">
+      <img class="user-img1" src="http://lorempixel.com/50/50/nightlife/" width="50">
       <div class="comentario-post">
         
         <!-- <span class="placeholder" v-show="visible">Comentário...</span> -->
@@ -18,8 +19,8 @@
       </div>
     </div>
     <div class="comentario-container" v-for="(comentario, index) of comentarios" :key="index">
-      <hr class="divisor">
-      <img class="user-img2" src="https://placekitten.com/50/50" width="50">
+      <!-- <hr class="divisor"> -->
+      <img class="user-img2" src="http://lorempixel.com/50/50/people/" width="50">
       <div class="comentario-group">
         <span class="comentario-nome">{{ comentario.user_name }}</span> | 
         <small>{{ new Date(comentario.date).toLocaleString() }}</small>
@@ -28,12 +29,58 @@
         </p>
         <div class="comentario-acao">
           <button>Curtir</button>
-          <button>Comentar</button>
+          <button @click="showReply(index)">Responder</button>
         </div>
-        
+        <div class="reply">
+          <img class="user-img1" src="http://lorempixel.com/50/50/people/" width="50">
+          <div class="comentario-post">
+            
+            <!-- <span class="placeholder" v-show="visible">Comentário...</span> -->
+
+            <div class="comentario-texto" contenteditable="true">
+              <p>
+                
+              </p>
+            </div>
+            <div class="actions">
+              <button class="btn" @click="postarResposta(index)">Comentar</button>
+            </div>
+          </div>
+          <div class="comentario-container" v-for="(comentario, index) of comentarios" :key="index">
+            <hr class="divisor">
+            <img class="user-img2" src="http://lorempixel.com/50/50/food/" width="50">
+            <div class="comentario-group">
+              <span class="comentario-nome">{{ comentario.user_name }}</span> | 
+              <small>{{ new Date(comentario.date).toLocaleString() }}</small>
+              <p class="comentario-texto">
+                {{ comentario.texto }}
+              </p>
+              <div class="comentario-acao">
+                <button>Curtir</button>
+                <button @click="showReply(index)">Responder</button>
+              </div>
+              <div class="reply">
+                <img class="user-img1" src="http://lorempixel.com/50/50/people/" width="50">
+                <div class="comentario-post">
+                  
+                  <!-- <span class="placeholder" v-show="visible">Comentário...</span> -->
+
+                  <div class="comentario-texto" contenteditable="true">
+                    <p>
+                      
+                    </p>
+                  </div>
+                  <div class="actions">
+                    <button class="btn" @click="postarResposta(index)">Comentar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <hr class="divisor">
+    
   </div>
 </template>
 
@@ -48,7 +95,14 @@
         comentario: {
           user_name: '',
           date: '',
-          texto: ''
+          texto: '',
+          r: []
+        },
+        resposta: {
+          user_name: '',
+          date: '',
+          texto: '',
+          comentarios: []
         }
       }
     },
@@ -63,24 +117,25 @@
         localStorage.setItem('comentarios', JSON.stringify(this.comentarios))
         this.listar()
       },
+      postarResposta(index) {
+        this.resposta = {
+          user_name: 'Leonardo Lima',
+          date: new Date(),
+          texto: document.querySelectorAll('.reply div.comentario-texto')[index].innerText
+        }
+        this.comentario.r.push(this.resposta)
+        this.comentarios.push(this.comentario)
+        localStorage.setItem('comentarios', JSON.stringify(this.comentarios))
+      },
       listar() {
         var comentariosStorage = JSON.parse(localStorage.getItem('comentarios'))
         if (comentariosStorage) {
           this.comentarios = comentariosStorage
         }
       },
-      placeholderBlur() {
-        var comentario = document.querySelector('div.comentario-texto').innerText
-        if (comentario == "") {
-          this.visible = true
-        } else {
-          this.visible = false
-        }
-      },
-      placeholderFocus() {
-        var comentario = document.querySelector('div.comentario-texto')
-        this.visible = false
-        comentario.focus
+      showReply(index) {
+        var teste = document.querySelectorAll('.reply')[index]
+        teste.style.display = 'block'
       }
     },
     mounted() {
@@ -92,11 +147,9 @@
 <style scoped>
   .comentarios {
     max-width: 1000px;
-    margin: 15px auto;
-    padding: 15px 30px;
   }
   .comentario-container {
-    margin: 10px 0;
+    margin: 20px 0;
   }
   /*.placeholder {
     margin: 10px;
@@ -194,5 +247,8 @@
     border: 0;
     border-bottom: 1px dashed #e3891c;
     margin-bottom: 10px;
+  }
+  .reply {
+    display: none;
   }
 </style>

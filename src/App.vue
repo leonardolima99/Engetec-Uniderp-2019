@@ -33,9 +33,10 @@
     </section>
     <section class="main" :class="{ none: active }">
       <router-view />
+      <Comentarios></Comentarios>
     </section>
     <section class="footer">
-      <Comentarios></Comentarios>
+      
     </section>
   </div>
 </template>
@@ -69,14 +70,18 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
+    outline: none;
+  }
+  #app {
+    background-image: url('assets/grid-light.png');
+    background-attachment: fixed;
   }
   .navbar {
-    position: fixed;
     z-index: 9999;
     height: 50px;
     width: 100%;
     background: #33333320;
-    box-shadow: 0 2px 5px #33333380;
+    box-shadow: 0 2px 5px #333333;
     transition: top .2s;
   }
   .nav-title {
@@ -106,11 +111,11 @@
     color: #fc9a22;
   }
   .header {
-    background: linear-gradient(rgba(0,0,0, 0.2), rgba(0,0,0, 0.2)), url("assets/fundo.jpeg");
+    background: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)), url("assets/fundo.jpeg");
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 100vh;
+    height: 400px;
     user-select: none;
     position: absolute;
     top: 0;
@@ -118,15 +123,13 @@
   .main {
     position: relative;
     max-width: 1000px;
-    min-height: 600px;
     left: 50%;
     transform: translateX(-50%);
     margin-right: 30px;
-    padding: 30px;
-    background-color: #fff;
-    margin-top: 450px;
+    padding: 50px 30px;
+    margin-top: 400px;
     border-radius: 5px;
-    box-shadow: 0 0 10px 2px #33333370;
+    /*box-shadow: 0 0 10px 2px #33333370;*/
   }
   .title {
     position: relative;
@@ -134,7 +137,7 @@
     flex-direction: column;
     align-items: center;
     padding: 0 15px 15px 15px;
-    top: 150px;
+    top: 100px;
     text-align: center;
     text-shadow: 0 0 15px #000000;
   }
@@ -178,6 +181,11 @@
     text-align: justify;
     line-height: 160%;
     margin-bottom: 15px;
+  }
+  @media (max-width: 578px) {
+    .title {
+      margin-top: -40px !important;
+    }
   }
   @media (max-width: 991.98px) {
     .menu-toggle {
@@ -226,20 +234,21 @@
       transform: rotate(135deg);
     }
     /* Burger Icon end */
-    .title {
-      margin-top: -100px !important;
-    }
+    /*.title {
+      margin-top: -80px !important;
+    }*/
     .title.active {
       display: none;
     }
     .container-navbar {
       background: #33333320;
-    box-shadow: 0 2px 5px #33333380;
+      box-shadow: 0 2px 5px #33333380;
     }
     .navbar {
       position: absolute;
       background: #33333320;
       box-shadow: 0 0 0 transparent;
+      font-weight: bold;
       width: 100%;
       height: 100%;
       left: -100%;
@@ -254,6 +263,7 @@
       height: 50px;
       line-height: 50px;
       font-size: 25px;
+      font-weight: bold;
       padding: 0 15px;
     }
     .nav-list {
@@ -275,7 +285,7 @@
       visibility: hidden;
     }
     .main {
-      margin-top: 360px;
+      margin-top: 390px;
     }
   }
 </style>
