@@ -35,6 +35,7 @@
       <div class="buttons">
         <button type="reset" class="btn">Cancelar</button>
         <button type="submit" class="btn btn-primary">Inscrever</button>
+        <!-- <button @click="listar">Listar</button> -->
       </div>
             
     </form>
@@ -48,19 +49,35 @@ export default {
   data() {
     return {
       dados: {
-        nome: '',
-        email: '',
-        telefone: '',
-        rg: '',
-        curso: '',
-        semestre: ''
+        nome: "",
+        email: "",
+        telefone: "",
+        rg: "",
+        curso: "",
+        semestre: ""
       }
     }
   },
   methods: {
-    inscrever() {
-      localStorage.setItem('inscricao', JSON.stringify(this.dados))
-      console.log('teste ' + JSON.stringify(this.dados))
+    async inscrever() {
+      var res = await fetch('https://engetec-api.herokuapp.com/inscricoes/new', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.dados)
+      })
+      // localStorage.setItem('inscricao', JSON.stringify(this.dados))
+      console.log(res)
+    },
+    async listar() {
+      var res = await fetch('https://engetec-api.herokuapp.com/inscricoes', {
+        mode: 'cors'
+      })
+      res = await res.json()
+      console.log(res)
     },
     mascaraTelefone(t, mask) {
       var i = t.length
@@ -82,7 +99,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   form.inscricao {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -179,7 +196,7 @@ export default {
       position: absolute;
       width: calc(100% - 60px) !important;
     }
-    .buttons .buttons {
+    .buttons {
       width: 100% !important;
     }
   }

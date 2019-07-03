@@ -12,14 +12,20 @@
               <router-link class="nav-link" to="/inscricao">Increva-se</router-link>
             </li>
             <li class="nav-item">
+              <router-link class="nav-link" to="/relacao">Relação de Inscritos</router-link>
+            </li>
+            <li class="nav-item">
               <router-link class="nav-link" to="/galeria">Galeria</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/eventos">Eventos</router-link>
             </li>
+            <li class="nav-item adm">
+              <router-link class="nav-link" to="/entrar">Entrar</router-link>
+            </li>
           </ul>
         </nav>
-        <div class="menu-toggle" @click="toggle()" :class="{ active }">
+        <div class="menu-toggle" @click="toggle" :class="{ active }">
           <i class="burger-icon" aria-hidden="true"></i>
         </div>  
       </div>
@@ -38,6 +44,9 @@
     <section class="footer">
       
     </section>
+    <span class="backtop" @click="backtoTop">
+      <i class="material-icons">keyboard_arrow_up</i>
+    </span>
   </div>
 </template>
 
@@ -46,15 +55,20 @@
   export default {
     data() {
       return {
-        active: false
+        active: false,
+        entrar: false
       }
     },
     methods: {
       toggle() {
         this.active = !this.active
-      } ,
-      scrollNavbar() {
-        var prevScrollpos = window.pageYOffset
+      },
+      entrarToggle() {
+        this.entrar = !this.entrar
+      },
+      backtoTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
       }
     },
     components: {
@@ -72,16 +86,48 @@
     font-family: 'Quicksand', sans-serif;
     outline: none;
   }
+  html, body {
+    scroll-behavior: smooth;
+  }
+  .backtop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    border: 2px solid #00000090;
+    border-radius: 5px;
+    transition: .2s;
+  }
+  .backtop:hover {
+    border-color: transparent;
+    background-color: #00000090;
+  }
+  .backtop:hover .material-icons {
+    color: #fff;
+  }
+  .material-icons {
+    font-size: 40px;
+    color: #00000090;
+    user-select: none;
+    cursor: pointer;
+    transition: .2s;
+  }
   #app {
     background-image: url('assets/grid-light.png');
     background-attachment: fixed;
   }
   .navbar {
-    z-index: 9999;
-    height: 50px;
+    z-index: 1000;
     width: 100%;
-    background: #33333320;
-    box-shadow: 0 2px 5px #333333;
+    height: 50px;
+    background: #33333360;
+    box-shadow: 0 2px 5px #222;
+    font-weight: bold;
     transition: top .2s;
   }
   .nav-title {
@@ -89,19 +135,25 @@
   }
   .nav-list {
     max-width: 1000px;
+    margin: 0 auto;
     display: flex;
     list-style: none;
-    margin: 0 auto;
   }
-  .nav-item {
+  .adm {
+    justify-content: flex-end;
+    float: right;
+    margin-left: auto;
   }
   .nav-link {
     text-decoration: none;
-    display: block;
+    background-color: transparent;
+    font-size: 16px;
     color: #fff;
+    display: block;
     padding: 11.5px;
     border: 4px solid transparent;
     transition: .2s;
+    cursor: pointer;
   }
   .nav-link:hover {
     border-bottom: 4px solid #fc9a2280;
@@ -161,8 +213,6 @@
     width: 35px;
     height: 25px;
     cursor: pointer;
-  }
-  .page {
   }
   .article-title {
     margin-bottom: 20px;
@@ -248,14 +298,15 @@
       position: absolute;
       background: #33333320;
       box-shadow: 0 0 0 transparent;
-      font-weight: bold;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       left: -100%;
+      opacity: 0;
       transition: .4s;
     }
     .navbar.active {
       left: 0;
+      opacity: 1;
     }
     .nav-title {
       display: block;
@@ -274,7 +325,7 @@
     }
     .nav-link:hover {
       border-left: 4px solid #fc9a2280;
-      border-bottom: transparent !important;
+      border-bottom: 4px solid transparent;
     }
     .router-link-exact-active {
       border-left: 4px solid #fc9a22 !important;
