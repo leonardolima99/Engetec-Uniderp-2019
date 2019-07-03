@@ -13,7 +13,7 @@
     data() {
       return {
         title: '',
-        img: 'http://lorempixel.com/400/400/nightlife/',
+        img: 'https://lorempixel.com/400/400/nightlife/',
         content: ''
       }
     },

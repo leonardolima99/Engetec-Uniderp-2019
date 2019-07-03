@@ -3,40 +3,40 @@
     <h2>Galeria</h2>
     <div class="imagens">
       <div class="img-galeria">
-        <img src="http://lorempixel.com/300/200/abstract/">
+        <img src="https://lorempixel.com/300/200/abstract/">
       </div>
       <div class="img-galeria">
-        <img src="http://lorempixel.com/300/200/city/">
+        <img src="https://lorempixel.com/300/200/city/">
       </div>
       <div class="img-galeria">
-        <img src="http://lorempixel.com/300/200/people/">
+        <img src="https://lorempixel.com/300/200/people/">
       </div>
       <div class="img-galeria">
-        <img src="http://lorempixel.com/300/200/transport/">
+        <img src="https://lorempixel.com/300/200/transport/">
       </div>
       <div class="img-galeria">
-        <img src="http://lorempixel.com/300/200/animals/">
+        <img src="https://lorempixel.com/300/200/animals/">
       </div>
       <div class="img-galeria">
-        <img src="http://lorempixel.com/300/200/food/">
+        <img src="https://lorempixel.com/300/200/food/">
       </div>
       <div class="img-galeria">
-        <img src="http://lorempixel.com/300/200/nature/">
+        <img src="https://lorempixel.com/300/200/nature/">
       </div>
       <div class="img-galeria">
-        <img src="http://lorempixel.com/300/200/business/">
+        <img src="https://lorempixel.com/300/200/business/">
       </div>
       <div class="img-galeria">
-        <img src="http://lorempixel.com/300/200/nightlife/">
+        <img src="https://lorempixel.com/300/200/nightlife/">
       </div>
       <div class="img-galeria">
-        <img src="http://lorempixel.com/300/200/sports/">
+        <img src="https://lorempixel.com/300/200/sports/">
       </div>
       <div class="img-galeria">
-        <img src="http://lorempixel.com/300/200/cats/">
+        <img src="https://lorempixel.com/300/200/cats/">
       </div>
       <div class="img-galeria">
-        <img src="http://lorempixel.com/300/200/technics/">
+        <img src="https://lorempixel.com/300/200/technics/">
       </div>
     </div>
   </div>
