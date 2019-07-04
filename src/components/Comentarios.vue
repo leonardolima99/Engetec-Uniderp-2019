@@ -9,9 +9,7 @@
         <!-- <span class="placeholder" v-show="visible">Comentário...</span> -->
 
         <div class="comentario-texto" contenteditable="true">
-          <p>
-            
-          </p>
+          
         </div>
         <div class="actions">
           <button class="btn" @click="postar">Comentar</button>
@@ -24,8 +22,7 @@
       <div class="comentario-group">
         <span class="comentario-nome">{{ comentario.user_name }}</span> | 
         <small>{{ new Date(comentario.date).toLocaleString() }}</small>
-        <p class="comentario-texto">
-          {{ comentario.texto }}
+        <p class="comentario-texto" v-html="comentario.texto">
         </p>
         <div class="comentario-acao">
           <button>Curtir</button>
@@ -64,7 +61,7 @@
         this.comentario = {
           user_name: 'Leonardo Lima',
           date: new Date(),
-          texto: document.querySelector('div.comentario-texto').innerText
+          texto: document.querySelector('div.comentario-texto').innerHTML
         }
         this.comentarios.push(this.comentario)
         localStorage.setItem('comentarios', JSON.stringify(this.comentarios))
@@ -74,7 +71,7 @@
         this.resposta = {
           user_name: 'Leonardo Lima',
           date: new Date(),
-          texto: document.querySelectorAll('.reply div.comentario-texto')[index].innerText
+          texto: document.querySelectorAll('.reply div.comentario-texto')[index].innerHTML
         }
         this.comentario.r.push(this.resposta)
         this.comentarios.push(this.comentario)
