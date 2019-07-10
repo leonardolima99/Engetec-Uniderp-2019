@@ -3,7 +3,7 @@
     <h2>Eventos</h2>
     <div class="evento" v-for="(evento, index) of eventos" :key="index">
       <div class="img-evento">
-        <img :src="link + index">
+        <img :src="evento.image" width="300" height="200">
       </div>
       <div class="detalhes">
         <p><strong>Nome: </strong> {{ evento.name }}</p>
@@ -31,13 +31,12 @@ export default {
   name: 'eventos',
   data() {
     return {
-      eventos: [],
-      link: 'https://lorempixel.com/300/200/business/'
+      eventos: []
     }
   },
   methods: {
     async listar() {
-      var res = await fetch('https://engetec-api.herokuapp.com/eventos', {
+      var res = await fetch('http://leonardo-pc:3000/eventos', {
         method: 'GET',
         mode: 'cors'
       })
