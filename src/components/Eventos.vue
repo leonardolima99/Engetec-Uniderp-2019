@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     async listar() {
-      var res = await fetch('http://leonardo-pc:3000/eventos', {
+      var res = await fetch('https://engetec-api.herokuapp.com/eventos', {
         method: 'GET',
         mode: 'cors'
       })
