@@ -2,41 +2,8 @@
   <div class="galeria">
     <h2>Galeria</h2>
     <div class="imagens">
-      <div class="img-galeria">
-        <img src="https://lorempixel.com/300/200/abstract/">
-      </div>
-      <div class="img-galeria">
-        <img src="https://lorempixel.com/300/200/city/">
-      </div>
-      <div class="img-galeria">
-        <img src="https://lorempixel.com/300/200/people/">
-      </div>
-      <div class="img-galeria">
-        <img src="https://lorempixel.com/300/200/transport/">
-      </div>
-      <div class="img-galeria">
-        <img src="https://lorempixel.com/300/200/animals/">
-      </div>
-      <div class="img-galeria">
-        <img src="https://lorempixel.com/300/200/food/">
-      </div>
-      <div class="img-galeria">
-        <img src="https://lorempixel.com/300/200/nature/">
-      </div>
-      <div class="img-galeria">
-        <img src="https://lorempixel.com/300/200/business/">
-      </div>
-      <div class="img-galeria">
-        <img src="https://lorempixel.com/300/200/nightlife/">
-      </div>
-      <div class="img-galeria">
-        <img src="https://lorempixel.com/300/200/sports/">
-      </div>
-      <div class="img-galeria">
-        <img src="https://lorempixel.com/300/200/cats/">
-      </div>
-      <div class="img-galeria">
-        <img src="https://lorempixel.com/300/200/technics/">
+      <div class="img-galeria" v-for="img of imagens">
+        <img :src="img.imagem">
       </div>
     </div>
   </div>
@@ -44,7 +11,24 @@
 
 <script>
 export default {
-  name: 'galeria'
+  name: 'galeria',
+  data() {
+    return {
+      imagens: []
+    }
+  },
+  methods: {
+    async listar() {
+      let res = await fetch('https://engetec-api.herokuapp.com/galeria', {
+        method: 'GET',
+        mode: 'cors'
+      })
+      this.imagens = await res.json()
+    }
+  },
+  mounted() {
+    this.listar()
+  }
 }
 </script>
 
