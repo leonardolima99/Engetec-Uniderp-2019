@@ -177,8 +177,8 @@
     max-width: 1000px;
     left: 50%;
     transform: translateX(-50%);
-    margin-right: 30px;
-    padding: 50px 30px;
+    margin-right: 15px;
+    padding: 30px 15px;
     margin-top: 400px;
     border-radius: 5px;
     /*box-shadow: 0 0 10px 2px #33333370;*/
@@ -215,7 +215,7 @@
     cursor: pointer;
   }
   .article-title {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   .hr-title {
     margin-bottom: 10px;
