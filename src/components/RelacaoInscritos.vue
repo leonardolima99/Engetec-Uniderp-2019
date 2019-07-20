@@ -52,19 +52,49 @@
     /*border: 1px solid #00000080;*/
   }
   tr.thead {
-    border-bottom: 2px solid #00000080;
-    /*background-color: rgba(252, 154, 34, .92);*/
+    /*border-bottom: 2px solid #00000080;*/
+    background-color: rgba(252, 154, 34, .92);
     font-weight: bold;
   }
   tr.lista {
     /*background-color: #00000005;*/
   }
   tr:nth-child(even) {
-    /*background-color: #00000010;*/
+    /*background-color: darken(#000, 5%);*/
+    background-color: #00000015;
   }
   td {
-    padding: 10px;
-    border-bottom: 1px solid #00000080;
+    padding: 20px;
+    /*border-bottom: 1px solid #00000080;*/
     margin: 0;
+  }
+  @media only screen and (max-width: 767px) {
+    thead {
+      display: none;
+    }
+    tr.lista {
+      margin: 0 0 15px;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 0 1px 1px #00000030;
+    }
+    td {
+      display: block;
+      padding: 15px 20px 15px 120px;
+      position: relative;
+    } 
+    td::before {
+      content: 'Nome';
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+    }
+    td:nth-of-type(2)::before {
+      content: 'Curso';
+    }
+    td:nth-of-type(3)::before {
+      content: 'Semestre';
+    }
   }
 </style>
